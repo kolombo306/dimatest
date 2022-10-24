@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Button from '../button/button';
 import styles from './main.module.css';
+import { Context } from '../../context';
 
 function Main() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useContext(Context);
 
   const getUsers = () => {
     fetch(`${process.env.REACT_APP_BASE_URL}/users`)

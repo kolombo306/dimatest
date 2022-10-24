@@ -24,7 +24,7 @@ app.get("/users", (req, res) => {
 app.post("/user", (req, res) => {
   const newUser = req.body;
   arr.push(newUser);
-  res.json({ result: "ok" }).status(201);
+  res.json(arr).status(201);
 });
 
 app.delete("/user", (req, res) => {
