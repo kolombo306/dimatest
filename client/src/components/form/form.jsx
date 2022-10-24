@@ -19,6 +19,7 @@ function Form() {
         throw new Error('Service Response Error');
       })
       .then((data) => setUsers(data))
+      .then(() => setName(''))
       .catch((e) => {
         console.log(e);
       });
