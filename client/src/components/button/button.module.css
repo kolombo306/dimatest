@@ -1,0 +1,22 @@
+button {
+    padding: 0.5em;
+    font: inherit;
+    color: inherit;
+    background-color: rgba(198, 255, 163, 0.62);
+    border: 0;
+    border-radius: 0.4em;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: blanchedalmond;
+}
+
+button:active {
+    background-color: #ddfac2;
+}
+
+.self {
+    margin-top: auto;
+    cursor: pointer;
+}

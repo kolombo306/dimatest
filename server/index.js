@@ -11,8 +11,10 @@ app.use(express.json());
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 let arr = [
-  { name: "Pavel", age: 33 },
-  { name: "Anton", age: 43 },
+  { name: "Sokrat", age: 33 },
+  { name: "Diogen", age: 43 },
+  { name: "Mark Avreliy", age: 33 },
+  { name: "Evklid", age: 43 },
 ];
 
 app.get("/users", (req, res) => {

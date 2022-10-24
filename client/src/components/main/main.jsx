@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Button from '../button/button';
+import styles from './main.module.css';
 
 function Main() {
   const [users, setUsers] = useState([]);
@@ -15,15 +17,37 @@ function Main() {
       });
   };
 
+  const deleteUser = (userToDelete) => {
+    fetch(`${process.env.REACT_APP_BASE_URL}/user`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: userToDelete }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error('Service Response Error');
+      })
+      .then((data) => setUsers(data))
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   return (
-    <>
-      <button onClick={getUsers}>GET USERS</button>
+    <div className={styles.main}>
+      <h4>Список пользователей{users.length ? ':' : ' пуст'}</h4>
       <ul>
-        {users.map((el) => (
-          <li key={Math.random().toFixed(5)}>{el.name}</li>
+        {users.map((el, index) => (
+          <li key={index + el.name.toString()}>
+            {el.name.toString()}
+            <Button caption="X" func={() => deleteUser(el.name)}></Button>
+          </li>
         ))}
       </ul>
-    </>
+      <Button caption="Получить данные" func={getUsers}></Button>
+    </div>
   );
 }
 
